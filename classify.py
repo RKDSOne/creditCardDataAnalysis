@@ -1,0 +1,19 @@
+from sklearn import svm
+import numpy as np
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+
+X_test = np.load('X_test.npy')
+y_test = np.load('y_test.npy')
+X_train = np.load('X_train.npy')
+y_train = np.load('y_train.npy')
+# clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth=20, criterion='entropy', splitter='random'),
+                        # algorithm="SAMME.R")
+
+# clf = GaussianNB()
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+scores = clf.score(X_test, y_test)
+print(scores)
